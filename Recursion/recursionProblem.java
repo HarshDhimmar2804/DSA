@@ -83,10 +83,37 @@ public class recursionProblem {
     return;
   }
 
+  static String digits[] = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
+  public static void printDigit(int num) {
+    if (num == 0) {
+      return;
+    }
+    int lastDigit = num % 10;
+    printDigit(num / 10);
+    System.out.print(digits[lastDigit] + " ");
+  }
+
+  static int total = 3;
+
+  public static void towerOfHanoi(char src, char des, char aux, int n) {
+    if (n == 0) {// base case
+      return;
+    }
+    towerOfHanoi(src, aux, des, n - 1);// 1st faith (small disc src->aux)
+    System.out.println((total - n + 1) + ". disc move from " + src + " tower to " + des + " tower");
+    towerOfHanoi(aux, des, src, n - 1);// 2st faith (small disc aux->des)
+  }
+
   public static void main(String[] args) {
-    int arr[] = { 3, 2, 4, 5, 6, 2, 7, 2, 2 };
-    int key = 2;
-    occurenceIndex(arr, key, 0);
+    printDigit(1947);
+    System.out.println();
+
+    // towerOfHanoi('A', 'C', 'B', 3);
+
+    // int arr[] = { 3, 2, 4, 5, 6, 2, 7, 2, 2 };
+    // int key = 2;
+    // occurenceIndex(arr, key, 0);
 
     // printBinStrings(3, 0, "");
 
