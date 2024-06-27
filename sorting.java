@@ -6,13 +6,18 @@ public class sorting {
   public static void bubbleSort(int arr[]) {
     for (int turn = 0; turn < arr.length - 1; turn++) {
       // int swap = 0;
+      boolean swaped = false;// bast case T(c) = o(n)
       for (int j = 0; j < arr.length - 1 - turn; j++) {
         if (arr[j] > arr[j + 1]) {
           int temp = arr[j];
           arr[j] = arr[j + 1];
           arr[j + 1] = temp;
           // swap++;
+          swaped = true;
         }
+      }
+      if (swaped == false) {
+        break;
       }
       // if (swap == 0) {
       // System.out.println("Already sorted");
@@ -85,7 +90,8 @@ public class sorting {
   public static void main(String[] args) {
     // int arr[] = { 5, 4, 1, 3, 2 };
     int arr[] = { 1, 4, 1, 3, 2, 4, 3, 7 };
-    countSort(arr);
+    bubbleSort(arr);
+    // countSort(arr);
     // Arrays.sort(arr);
     // Arrays.sort(arr, 0, 3);
     // Arrays.sort(arr, Collections.reverseOrder());// Here, main array will be
