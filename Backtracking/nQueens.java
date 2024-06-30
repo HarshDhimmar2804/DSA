@@ -40,6 +40,26 @@ public class nQueens {
     }
   }
 
+  public static boolean nQueen1(char board[][], int row) {
+    // base case
+    if (row == board.length) {
+      // printBoard(board);
+      count++;
+      return true;
+    }
+    // column loop
+    for (int j = 0; j < board.length; j++) {
+      if (isSafe(board, row, j)) {
+        board[row][j] = 'Q';
+        if (nQueen1(board, row + 1)) {
+          return true;
+        }
+        board[row][j] = 'X';// backtracking step
+      }
+    }
+    return false;
+  }
+
   public static void printBoard(char board[][]) {
     System.out.println("-------- Chess Board --------");
     for (int i = 0; i < board.length; i++) {
@@ -59,7 +79,13 @@ public class nQueens {
         board[i][j] = 'X';
       }
     }
-    nQueen(board, 0);
-    System.out.println("Total ways to solve n queens = " + count);
+    if (nQueen1(board, 0)) {
+      System.out.println("Soln is possible");
+      printBoard(board);
+    } else {
+      System.out.println("Soln is not possible");
+    }
+    // nQueen(board, 0);
+    // System.out.println("Total ways to solve n queens = " + count);
   }
 }
