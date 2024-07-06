@@ -9,6 +9,7 @@ public class Strings {
   }
 
   public static boolean isPalindrome(String str) {
+    str = str.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
     for (int i = 0; i < str.length() / 2; i++) {
       int n = str.length();
       if (str.charAt(i) != str.charAt(n - i - 1)) {
