@@ -102,5 +102,7 @@ public class MergeSort {
     ll.print();
     ll.head = ll.mergeSort(ll.head);
     ll.print();
+
+    //o(nlogn)
   }
 }
