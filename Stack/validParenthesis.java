@@ -51,12 +51,12 @@ public class validParenthesis {
     return false;
   }
 
-  public static void maxArea(int arr[]) {
+  public static void maxArea(int arr[]) {// o(n)
     int maxArea = 0;
     int nsr[] = new int[arr.length];
     int nsl[] = new int[arr.length];
 
-    // next smaller right
+    // next smaller right //o(n)
     Stack<Integer> s = new Stack<>();
     for (int i = arr.length - 1; i >= 0; i--) {
       while (!s.isEmpty() && arr[s.peek()] >= arr[i]) {
@@ -70,7 +70,7 @@ public class validParenthesis {
       s.push(i);
     }
 
-    // next smaller left
+    // next smaller left //o(n)
     s = new Stack<>();
     for (int i = 0; i < arr.length; i++) {
       while (!s.isEmpty() && arr[s.peek()] >= arr[i]) {
@@ -84,7 +84,7 @@ public class validParenthesis {
       s.push(i);
     }
 
-    // current area : width = nsr[i] - nsl[i] - 1
+    // current area : width = nsr[i] - nsl[i] - 1 //o(n)
     for (int i = 0; i < arr.length; i++) {
       int height = arr[i];
       int width = nsr[i] - nsl[i] - 1;
